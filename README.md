@@ -46,3 +46,13 @@ $ npm run test:e2e
 # test coverage
 $ npm run test:cov
 ```
+
+## Endpoints
+
+### Anonymous, top-level endpoints
+
+__`GET /`__
+
+Responds with just two bytes, `ok`. All other endpoints use `application/json`
+for their response `Content-Type`, but this endpoint uses `text/plain` instead.
+Useful for AWS App Runner to 'ping' every 20 seconds, to show the app's running.
