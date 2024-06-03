@@ -14,3 +14,35 @@ a Google Firestore database.
 - Can send emails to confirm sign-up, or to reset passwords
 - Provides CRUD for user account/profile data, app-usage statistics, and more
 - 'superadmin' access, for managing all apps in once place
+
+## Installation
+
+```bash
+$ npm install
+```
+
+## Running the app
+
+```bash
+# development
+$ npm run start
+
+# watch mode
+$ npm run start:dev
+
+# production mode
+$ npm run start:prod
+```
+
+## Test
+
+```bash
+# unit tests
+$ npm run test
+
+# e2e tests
+$ npm run test:e2e
+
+# test coverage
+$ npm run test:cov
+```
