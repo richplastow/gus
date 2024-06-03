@@ -1,0 +1,14 @@
+{
+  "name": "gus",
+  "version": "0.0.1",
+  "description": "A generic user server, based on Nest.js, Express and Node, which manages user auth and accounts for multiple domains at once",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "node run-tests.js"
+  },
+  "author": "Rich Plastow",
+  "license": "MIT",
+  "dependencies": {
+  }
+}
