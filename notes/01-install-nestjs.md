@@ -5,7 +5,7 @@
 ## Initial installation
 
 Based on the [NestJS docs,](https://docs.nestjs.com/#installation) install the
-Nest CLI: 
+Nest CLI:
 
 ```bash
 npm i -g @nestjs/cli
@@ -17,9 +17,9 @@ nest --version
 nest new gus --strict # the '--strict' flag chooses TypeScript's stricter feature set
 # ⚡  We will scaffold your app in a few seconds..
 # ? Which package manager would you ❤️ to use? (Use arrow keys)
-# ❯ npm 
-#   yarn 
-#   pnpm 
+# ❯ npm
+#   yarn
+#   pnpm
 npm
 # CREATE gus/.eslintrc.js (663 bytes)
 # CREATE gus/.prettierrc (51 bytes)
@@ -87,13 +87,13 @@ npm run test:cov
 #     root
 #       ✓ should return "Hello World!" (22 ms)
 # -------------------|---------|----------|---------|---------|-------------------
-# File               | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
+# File               | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s
 # -------------------|---------|----------|---------|---------|-------------------
-# All files          |   54.16 |      100 |      75 |      50 |                   
-#  app.controller.ts |     100 |      100 |     100 |     100 |                   
-#  app.module.ts     |       0 |      100 |     100 |       0 | 1-10              
-#  app.service.ts    |     100 |      100 |     100 |     100 |                   
-#  main.ts           |       0 |      100 |       0 |       0 | 1-8               
+# All files          |   54.16 |      100 |      75 |      50 |
+#  app.controller.ts |     100 |      100 |     100 |     100 |
+#  app.module.ts     |       0 |      100 |     100 |       0 | 1-10
+#  app.service.ts    |     100 |      100 |     100 |     100 |
+#  main.ts           |       0 |      100 |       0 |       0 | 1-8
 # -------------------|---------|----------|---------|---------|-------------------
 # Test Suites: 1 passed, 1 total
 # Tests:       1 passed, 1 total
@@ -121,6 +121,7 @@ firestore-json-key-*.json
 
 I also added some info near the top of the generated gus/packages.json file:
 
+```json
 {
   "name": "gus",
   "version": "0.0.1",
@@ -130,6 +131,7 @@ I also added some info near the top of the generated gus/packages.json file:
   "license": "MIT",
   ...
 }
+```
 
 ```bash
 mv gus/README.md notes/02-nestjs-default-readme.md

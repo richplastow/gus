@@ -94,3 +94,98 @@ npm run test:e2e # runs the test/app.e2e-spec.ts end-to-end test
 # Time:        4.293 s, estimated 5 s
 # Ran all test suites.
 ```
+
+## Configure VS Code to apply Prettier and ESLint rules
+
+Prettier and ESLint can be configured to suit your preferred code formatting
+style. Currently the .prettierrc file in the top level is:
+
+```json
+{
+    "singleQuote": true,
+    "trailingComma": "all"
+}
+```
+
+Running `npm run lint` doesn't change any files.
+
+> The Prettier configuration file is
+> [documented here.](https://prettier.io/docs/en/configuration.html)
+
+Change the .prettierrc file to:
+
+```json
+{
+    "singleQuote": true,
+    "tabWidth": 4,
+    "trailingComma": "all"
+}
+```
+
+```bash
+npm run lint
+# > gus@0.0.1 lint
+# > eslint "{src,apps,libs,test}/**/*.ts" --fix
+# =============
+# WARNING: You are currently running ...
+# ...
+# =============
+```
+
+You should see that .ts files in src/ and test/ have had their indents changed
+from 2 to 4 spaces.
+
+If you manually edit one of those files, to give a line incorrect indenting,
+there are no red squiggly underlines, and the filename does not turn red in
+VS Code's 'EXPLORER' sidebar.
+
+Install the "dbaeumer.vscode-eslint" extension - you should see the red errors
+appear. When you hover it should say "Insert \`··\` eslint(prettier/prettier)"
+
+Save the file - ESLint and Prettier rules are not applied yet.
+
+Create this .vscode/settings.json file:
+
+```js
+{
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": true
+    }
+}
+```
+
+Now the bad indents will be automatically fixed when the file is saved.
+
+> Using `"source.fixAll.eslint": true ` instead of `"source.fixAll": true`
+> prevents VS Code from automatically deleting unreachable code after a `return`
+> statement, which can be annoying during development.
+
+In .eslintrc.js on the top level, add a `rule` so that unreachable code is still
+highlighted, even though it doesn't automatically get fixed:
+
+```js
+...
+    rules: {
+        'no-unreachable': 'warn',
+        '@typescript-eslint/interface-name-prefix': 'off',
+...
+```
+
+```bash
+npm run lint
+# > gus@0.0.1 lint
+# > eslint "{src,apps,libs,test}/**/*.ts" --fix
+# ...
+# =============
+# .../gus/src/main.ts
+#   7:5  warning  Unreachable code  no-unreachable
+# ✖ 1 problem (0 errors, 1 warning)
+```
+
+At this stage you'll notice that saving most files, including Markdown, will
+cause some formatting to be automatically updated. For example, trailing spaces
+at the end of lines are removed. Also, a newline is added to the end of most
+kinds of files, if missing. I went through and manually saved all the
+(non-git-ignored) files in the repo - I'm not sure if there's an automatic way
+to do that.
